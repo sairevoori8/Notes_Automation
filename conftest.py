@@ -16,7 +16,6 @@ from selenium.webdriver.chrome.options import Options
 def driver():
 
     options = Options()
-    options.add_argument("--headless=new")
     # Disable notifications & popups
     prefs = {
         "profile.default_content_setting_values.notifications": 2,
