@@ -9,7 +9,7 @@ pipeline {
             steps {
 
                 git branch: 'main',
-                    url: 'https://github.com/sairevoori8/Notes_Automation.git'
+                    url: 'https://github.com/sairevoori8/CapstoneProject_Automation_Testing.git'
             }
         }
 
