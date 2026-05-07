@@ -7,3 +7,7 @@ explicit_wait: 15
 
 email: "testuser2055@gmail.com"
 password: "qwerty"
+
+#execution_mode: "grid"
+execution_mode: "local"
+grid_url: "http://localhost:4444/wd/hub"

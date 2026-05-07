@@ -1,38 +1,64 @@
 
 import pytest
+import os
+import allure
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-
 from webdriver_manager.chrome import ChromeDriverManager
-
 from config.environment import config
-import os
-import allure
-from selenium.webdriver.chrome.options import Options
+
+
 
 @pytest.fixture(scope="function")
 def driver():
 
     options = Options()
-    # Disable notifications & popups
+
     prefs = {
         "profile.default_content_setting_values.notifications": 2,
         "profile.default_content_setting_values.popups": 0,
     }
-    options.add_experimental_option("prefs", prefs)
+
+    options.add_experimental_option(
+        "prefs",
+        prefs
+    )
 
     options.add_argument("--disable-popup-blocking")
     options.add_argument("--disable-notifications")
     options.add_argument("--start-maximized")
 
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()),
-        options=options
+    execution_mode = config.get(
+        "execution_mode"
     )
 
-    driver.implicitly_wait(config.get("implicit_wait"))
+    if execution_mode == "grid":
+
+        driver = webdriver.Remote(
+
+            command_executor=config.get(
+                "grid_url"
+            ),
+
+            options=options
+        )
+
+    else:
+
+        driver = webdriver.Chrome(
+
+            service=Service(
+                ChromeDriverManager().install()
+            ),
+
+            options=options
+        )
+
+    driver.implicitly_wait(
+        config.get("implicit_wait")
+    )
 
     yield driver
 
