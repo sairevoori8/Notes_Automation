@@ -17,9 +17,6 @@ The project includes detailed QA documentation covering:
 - Requirement Traceability Matrix (RTM)
 - Test Scenarios
 - Manual Test Cases
-- Automation Coverage Mapping
-- Positive & Negative Test Flows
-- API and UI Validation Coverage
 
 ## Manual Report Document
 
