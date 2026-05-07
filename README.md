@@ -11,7 +11,7 @@ This framework supports:
 - Jenkins CI/CD Integration
 - Allure HTML Reporting
 
-# Project Overview
+# Overview
 
 
 The Login Page provides secure authentication functionality for registered users of the Notes application.
