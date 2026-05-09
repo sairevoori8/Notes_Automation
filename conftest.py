@@ -2,6 +2,7 @@ import pytest
 import os
 import allure
 
+from requests import options
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -47,6 +48,8 @@ def driver():
         # Extra stability
         options.add_argument("--disable-extensions")
         options.add_argument("--disable-infobars")
+        options.add_argument("--disable-blink-features=AutomationControlled")
+        options.add_argument("--disable-features=VizDisplayCompositor")
 
     execution_mode = config.get("execution_mode")
     if execution_mode == "grid":

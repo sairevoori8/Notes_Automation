@@ -135,7 +135,7 @@ def test_edit_existing_note(driver):
 
 @pytest.mark.ui
 @pytest.mark.regression
-
+@pytest.mark.ts
 def test_delete_existing_note(driver):
 
     login_page = LoginPage(driver)
