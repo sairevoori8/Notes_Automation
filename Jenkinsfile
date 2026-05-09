@@ -25,20 +25,23 @@ pipeline {
 
             steps {
 
-                bat 'python -m pytest --alluredir=reports/allure-results'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+
+                    bat 'python -m pytest --alluredir=reports/allure-results'
+                }
             }
         }
+    }
 
-        stage('Generate Allure Report') {
+    post {
 
-            steps {
+        always {
 
-                allure(
-                    includeProperties: false,
-                    jdk: '',
-                    results: [[path: 'reports/allure-results']]
-                )
-            }
+            allure(
+                includeProperties: false,
+                jdk: '',
+                results: [[path: 'reports/allure-results']]
+            )
         }
     }
 }
