@@ -4,6 +4,7 @@ from pages.notes_page import NotesPage
 from config.environment import config
 import time
 
+# Test to create note with valid data
 @pytest.mark.ui
 @pytest.mark.smoke
 def test_create_note_valid(driver):
@@ -26,6 +27,8 @@ def test_create_note_valid(driver):
 
     assert notes_page.is_note_created(title), "Note creation failed"
 
+
+# negative note creation
 @pytest.mark.ui
 @pytest.mark.regression
 
@@ -51,6 +54,7 @@ def test_create_note_empty_fields(driver):
     assert "required" in title_error.lower(), "Title validation missing"
     assert "required" in desc_error.lower(), "Description validation missing"
 
+# Mark note as completed
 @pytest.mark.ui
 @pytest.mark.regression
 
@@ -82,7 +86,7 @@ def test_mark_note_as_completed(driver):
         "Note was not marked as completed"
 
 
-
+# Edit existing note
 @pytest.mark.ui
 @pytest.mark.regression
 
@@ -127,6 +131,7 @@ def test_edit_existing_note(driver):
     assert notes_page.is_note_created(new_title), \
         "Note edit failed"
     
+# Delete existing note
 
 @pytest.mark.ui
 @pytest.mark.regression

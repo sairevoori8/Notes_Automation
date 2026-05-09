@@ -5,6 +5,8 @@ from config.environment import config
 from selenium.webdriver.common.by import By
 import allure
 
+
+# Validate Login Functionality
 @allure.step("Login Via api")
 @pytest.mark.api
 def test_login_api():
@@ -22,6 +24,7 @@ def test_login_api():
 
     assert "token" in response_body["data"]
 
+# Validate Note Creation via API
 @pytest.mark.api
 @pytest.mark.smoke
 def test_create_note_api():
@@ -60,7 +63,7 @@ def test_create_note_api():
     assert note_data["category"] == category
     assert note_data["completed"] is False
 
-
+# Validate UI-created note is visible in API
 @pytest.mark.api
 @pytest.mark.regression
 def test_delete_note_api():
@@ -103,6 +106,7 @@ def test_delete_note_api():
     assert delete_response_body["success"] is True
     assert delete_response_body["status"] == 200
 
+# Validate API-created note is visible in UI
 @pytest.mark.api
 @pytest.mark.smoke
 def test_get_all_notes_api():
@@ -154,7 +158,7 @@ def test_get_all_notes_api():
     assert created_note["description"] == description
     assert created_note["category"] == category
 
-
+# health check API
 @pytest.mark.api
 @pytest.mark.smoke
 def test_health_check_api():
@@ -171,6 +175,7 @@ def test_health_check_api():
     assert response_body["status"] == 200
     assert response_body["message"] == "Notes API is Running"
 
+# Negative Test: Invalid Login
 @pytest.mark.api
 @pytest.mark.negative
 def test_login_api_invalid_password():
@@ -188,6 +193,7 @@ def test_login_api_invalid_password():
 
     assert response_body["success"] is False
 
+# Negative Test: Access Protected Endpoint without Authentication
 @pytest.mark.api
 @pytest.mark.security
 def test_get_notes_without_authentication():
@@ -203,7 +209,7 @@ def test_get_notes_without_authentication():
     assert response_body["success"] is False
     assert response_body["status"] == 401
 
-
+# Negative Test: Register with Existing Email
 @pytest.mark.api
 @pytest.mark.security
 def test_access_protected_api_without_authentication():
@@ -219,7 +225,7 @@ def test_access_protected_api_without_authentication():
     assert response_body["success"] is False
     assert response_body["status"] == 401
 
-
+# Negative Test: Register with Existing Email
 @pytest.mark.api
 @pytest.mark.negative
 @pytest.mark.security
@@ -239,6 +245,7 @@ def test_register_with_existing_email():
 
     assert response_body["success"] is False
 
+# Negative Test: Access Protected Endpoint without Authentication
 @pytest.mark.ui
 @pytest.mark.security
 def test_access_notes_url_without_login(driver):
@@ -253,7 +260,8 @@ def test_access_notes_url_without_login(driver):
 
     assert "login" in current_url.lower(), \
         "User was able to access notes page without login"
-    
+
+# Negative Test: Access Protected Endpoint without Authentication
 @pytest.mark.security
 def test_access_profile_url_without_login(driver):
 

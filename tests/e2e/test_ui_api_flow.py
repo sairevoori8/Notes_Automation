@@ -7,7 +7,7 @@ from api.notes_api import NotesAPI
 from config.environment import config
 
 
-
+# E2E Test: Validate UI-created note is visible in API
 @pytest.mark.regression
 def test_validate_ui_to_api_note_consistency(driver):
 
@@ -71,6 +71,7 @@ def test_validate_ui_to_api_note_consistency(driver):
     assert created_note["title"] == title
     assert created_note["description"] == description
 
+# E2E Test: Validate API-deleted note is removed from UI
 @pytest.mark.e2e
 @pytest.mark.regression
 def test_validate_api_deletion_reflected_in_ui(driver):

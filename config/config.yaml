@@ -2,12 +2,14 @@ base_url: "https://practice.expandtesting.com/notes/app"
 api_base_url: "https://practice.expandtesting.com/notes/api"
 browser: "chrome"
 
-implicit_wait: 5
+implicit_wait: 10
 explicit_wait: 15
 
 email: "testuser2055@gmail.com"
 password: "qwerty"
 
-#execution_mode: "grid"
 execution_mode: "local"
+#execution_mode: "grid"
+headless: false
+
 grid_url: "http://localhost:4444/wd/hub"

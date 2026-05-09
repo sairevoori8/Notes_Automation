@@ -3,9 +3,10 @@ from pages.login_page import LoginPage
 from config.environment import config
 import selenium.webdriver.support.ui
 
-
+# Test to login
 @pytest.mark.ui
 @pytest.mark.smoke
+@pytest.mark.ts
 def test_valid_login(driver):
 
     login_page = LoginPage(driver)
@@ -19,6 +20,7 @@ def test_valid_login(driver):
 
     assert login_page.is_login_successful()
 
+# Test to login with invalid credentials
 @pytest.mark.ui
 @pytest.mark.smoke
 def test_login_invalid_credentials(driver):
