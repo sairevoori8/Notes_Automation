@@ -13,7 +13,7 @@ class BasePage:
             driver,
             config.get("explicit_wait")
         )
-
+# Common functions for all pages
     def open_url(self, url):
         self.driver.get(url)
 

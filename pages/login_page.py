@@ -13,6 +13,7 @@ class LoginPage(BasePage):
     DASHBOARD_TEXT = (By.CSS_SELECTOR, "[data-testid='home']")
     ERROR_MESSAGE = (By.CSS_SELECTOR, "[data-testid='alert-message']")
 
+    #functions to interact with the login page
     def get_error_message(self):
         return self.get_text(self.ERROR_MESSAGE)
     def load(self):

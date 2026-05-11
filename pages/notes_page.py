@@ -37,7 +37,7 @@ class NotesPage(BasePage):
             f"//div[@data-testid='note-card-title'][text()='{title}']"
         )
 
-    # ---------- Actions ----------
+    #  Actions 
 
     def click_add_note(self):
         self.click(self.ADD_NOTE_BUTTON)
@@ -56,8 +56,7 @@ class NotesPage(BasePage):
         self.enter_description(description)
         self.click_create()
 
-    # ---------- Validations ----------
-
+    # Validations
     def is_note_created(self, title):
         return self.is_visible(self.note_title(title))
 

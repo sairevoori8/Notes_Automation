@@ -2,8 +2,8 @@ base_url: "https://practice.expandtesting.com/notes/app"
 api_base_url: "https://practice.expandtesting.com/notes/api"
 browser: "chrome"
 
-implicit_wait: 25
-explicit_wait: 25
+implicit_wait: 35
+explicit_wait: 35
 
 email: "testuser2055@gmail.com"
 password: "qwerty"
