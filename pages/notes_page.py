@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 class NotesPage(BasePage):
 
-    # ---------- Locators ----------
+    # Locators 
 
     # Add Note Button
     ADD_NOTE_BUTTON = (By.XPATH, "//button[@data-testid='add-new-note']")
